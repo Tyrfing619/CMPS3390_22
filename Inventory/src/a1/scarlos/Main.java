@@ -14,12 +14,14 @@ public class Main {
         FoodItems[] foodItems = FoodItems.values();
         Tools[] tools = Tools.values();
         ToolUses[] toolUses = ToolUses.values();
+        Potions[] potionTypes = Potions.values();
+        Tomes[] tomeTypes = Tomes.values();
 
         System.out.print("How many items do you want: ");
         int itemCnt = Integer.parseInt(scan.nextLine());
 
         for (int i = 0; i < itemCnt; i++) {
-            int type = ran.nextInt(2);
+            int type = ran.nextInt(4);
             switch (type) {
                 case 0 -> {
                     int foodIndex = ran.nextInt(foodItems.length);
@@ -39,6 +41,26 @@ public class Main {
                     String use = toolUses[toolIndex].toString();
                     Tool tmpTool = new Tool(toolName, toolPrice, toolQty, use);
                     items.add(tmpTool);
+                }
+                case 2 -> {
+                    int potionIndex = ran.nextInt(potionTypes.length);
+                    String potionName = potionTypes[potionIndex].toString();
+                    float potionPrice = ran.nextFloat(10);
+                    int potionQty = ran.nextInt(30);
+                    int potionUses = 1;
+                    int potionDur = ran.nextInt(1200);
+                    PotionItem tmpPotion = new PotionItem(potionName, potionPrice, potionQty, potionUses, potionDur);
+                    items.add(tmpPotion);
+                }
+                case 3 -> {
+                    int tomeIndex = ran.nextInt(tomeTypes.length);
+                    String tomeName = tomeTypes[tomeIndex].toString();
+                    float tomePrice = ran.nextFloat(1000);
+                    int tomeQty = ran.nextInt(4);
+                    int tomeMP = ran.nextInt(100);
+                    int tomeDmg = ran.nextInt(1000);
+                    TomeItem tmpTome = new TomeItem(tomeName, tomePrice, tomeQty, tomeMP, tomeDmg);
+                    items.add(tmpTome);
                 }
             }
         }
