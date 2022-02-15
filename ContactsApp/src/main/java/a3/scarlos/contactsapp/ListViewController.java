@@ -2,16 +2,20 @@ package a3.scarlos.contactsapp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ListViewController {
@@ -22,6 +26,12 @@ public class ListViewController {
     GridPane newContact;
     @FXML
     TextField txtFirstName, txtLastName, txtPhone;
+
+    @FXML
+    MenuItem btnThemeDefault, btnThemeBlue, btnThemeF22;
+
+    @FXML
+    VBox vboxMain;
 
     ContactComparator comparator = new ContactComparator();
 
@@ -87,6 +97,26 @@ public class ListViewController {
             onDeleteContact();
         }
     }
+
+    @FXML
+    protected void onThemeChange(final ActionEvent event) {
+        String defaultCSS = Objects.requireNonNull(getClass().getResource("Default.css")).toString();
+        String blueCSS = Objects.requireNonNull(getClass().getResource("Blue.css")).toString();
+        String f22CSS = Objects.requireNonNull(getClass().getResource("F22.css")).toString();
+
+        vboxMain.getScene().getStylesheets().removeAll(defaultCSS, blueCSS, f22CSS);
+
+        Object source = event.getSource();
+        if (btnThemeDefault.equals(source)) {
+            vboxMain.getScene().getStylesheets().add(defaultCSS);
+        } else if (btnThemeBlue.equals(source)) {
+            vboxMain.getScene().getStylesheets().add(blueCSS);
+        } else if (btnThemeF22.equals(source)) {
+            vboxMain.getScene().getStylesheets().add(f22CSS);
+        }
+
+    }
+
     @FXML
     protected void onDeleteContact() {
         Contact selectedContact = contactsList.getSelectionModel().getSelectedItem();
