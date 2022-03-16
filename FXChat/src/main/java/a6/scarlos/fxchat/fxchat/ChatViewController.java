@@ -38,8 +38,14 @@ public class ChatViewController implements CanWriteMessage {
     @Override
     public void writeMessage(String message) {
         switch(message.charAt(0)) {
-            case '+' -> Platform.runLater(()-> people.add(message.substring(1)));
-            case '-' -> Platform.runLater(()-> people.remove(message.substring(1)));
+            case '+' -> {
+                Platform.runLater(()-> people.add(message.substring(1)));
+                Platform.runLater(()-> messages.add(message.substring(1) + " has connected"));
+            }
+            case '-' -> {
+                Platform.runLater(()-> people.remove(message.substring(1)));
+                Platform.runLater(()-> messages.add(message.substring(1) + " has disconnected"));
+            }
             default -> Platform.runLater(()-> messages.add(message));
         }
     }
