@@ -1,0 +1,36 @@
+.vbox {
+    -fx-background-color: #ffff99;
+}
+.tab-pane, .tab-header-background {
+    -fx-background-color: #ff65a3;
+    -fx-font-family: "Comic Sans MS";
+}
+
+.tab {
+    -fx-background-color: #ffff99;
+    -fx-text-fill: #000;
+}
+.tab:selected, .button {
+    -fx-background-color: #7afcff;
+    -fx-text-fill: #000;
+    -fx-font-family: "Comic Sans MS";
+}
+
+.list-view, .list-cell {
+    -fx-background-color: #ffff99;
+    -fx-text-fill: #000;
+    -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS";
+}
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: #000;
+    -fx-text-fill: #fff;
+}
+
+.hbox {
+    -fx-background-color: #ffff99;
+    -fx-text-fill: #000
+}
+
+
+

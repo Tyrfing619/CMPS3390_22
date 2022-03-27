@@ -4,16 +4,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a8.scarlos.javafxtodo.TodoController">
+<VBox prefHeight="400.0" prefWidth="600.0" stylesheets="@PostItNoteTheme.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a8.scarlos.javafxtodo.TodoController">
    <children>
       <TabPane fx:id="tabLists" maxHeight="35.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="NEVER">
         <tabs>
           <Tab onSelectionChanged="#onTabChanged" text="Home" />
           <Tab onSelectionChanged="#onTabChanged" text="School" />
+            <Tab onSelectionChanged="#onTabChanged" text="Work" />
+            <Tab onSelectionChanged="#onTabChanged" text="Groceries" />
         </tabs>
       </TabPane>
       <ListView fx:id="listItems" onMouseClicked="#onItemClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-      <HBox spacing="10.0">
+      <HBox spacing="10.0" styleClass="hbox">
          <children>
             <TextField fx:id="txtItem" onAction="#onAddItem" HBox.hgrow="ALWAYS" />
             <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onAddItem" text="Add" />
