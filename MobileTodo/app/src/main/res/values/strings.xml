@@ -4,6 +4,7 @@
     <string name="groceries">Groceries</string>
     <string name="school">School</string>
     <string name="work">Work</string>
+    <string name="gaming">Gaming</string>
     <string name="add">Add</string>
     <string name="todo_item">Todo Item</string>
 </resources>
