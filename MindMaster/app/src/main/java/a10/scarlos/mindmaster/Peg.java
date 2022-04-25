@@ -18,12 +18,12 @@ public class Peg {
         for (int i = 0; i < 6; i++) {
             paints.add(new Paint());
         }
-        paints.get(0).setARGB(255, 50, 50, 50);     //dark grey
-        paints.get(1).setARGB(255, 255, 0, 0);      //red
-        paints.get(2).setARGB(255, 0, 0, 255);      //blue
-        paints.get(3).setARGB(255, 0, 255, 0);      //green
-        paints.get(4).setARGB(255, 255, 255, 0);    //yellow
-        paints.get(5).setARGB(255, 255, 165, 0);    //orange
+        paints.get(0).setARGB(255, 50, 50, 50);     //0 dark grey
+        paints.get(1).setARGB(255, 255, 0, 0);      //1 red
+        paints.get(2).setARGB(255, 0, 0, 255);      //2 blue
+        paints.get(3).setARGB(255, 0, 255, 0);      //3 green
+        paints.get(4).setARGB(255, 255, 255, 0);    //4 yellow
+        paints.get(5).setARGB(255, 255, 165, 0);    //5 orange
         this.radius = radius;
         this.pos = pos;
     }
@@ -45,5 +45,9 @@ public class Peg {
 
     private void pegClicked() {
         selectedPaint = (selectedPaint + 1) % paints.size();
+    }
+
+    public Point getPos() {
+        return pos;
     }
 }
