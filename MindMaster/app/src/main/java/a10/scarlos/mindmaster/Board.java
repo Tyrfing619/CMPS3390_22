@@ -21,11 +21,18 @@ public class Board {
 
     public Board(Point screenSize, Resources resources) {
         background = BitmapFactory.decodeResource(resources, R.drawable.board);
-        background = Bitmap.createScaledBitmap(background, (int)(screenSize.y * 0.66), screenSize.y, true); //filter applies AA
+
+        //background = Bitmap.createScaledBitmap(background, (int)(screenSize.y * 0.66), screenSize.y, true); //filter applies AA
+        if(screenSize.y * 0.63f > screenSize.x) {
+            background = Bitmap.createScaledBitmap(background, screenSize.x, (int)(screenSize.x * 1.63f), true);
+        } else {
+            background = Bitmap.createScaledBitmap(background, (int)(screenSize.y * 0.63f), screenSize.y, true);
+        }
+
         boardXPos = screenSize.x / 2 - background.getWidth() / 2;
-        pegRadius = background.getHeight() / 30;
-        rowVertSpace = background.getHeight() / 11;
-        rowYOffset = background.getHeight() / 15;
+        pegRadius = Math.round(background.getHeight() / 35f);
+        rowYOffset = Math.round(pegRadius + background.getHeight() / 30f);
+        rowVertSpace = Math.round(pegRadius + (background.getHeight() / 14.7f));
 
         generatePegs();
     }
@@ -33,8 +40,8 @@ public class Board {
     private void generatePegs() {
         for (int r = 0; r < 10; r++) {
             for (int c = 0; c < 4; c++) {
-                int pegX = pegRadius * c * 3 + boardXPos + pegRadius * 2;
-                int pegY = r * rowVertSpace + rowYOffset + r * 5;
+                int pegX = c * pegRadius * 3 + boardXPos + pegRadius * 2;
+                int pegY = rowYOffset + r * rowVertSpace;
                 Peg tmp = new Peg(0, pegRadius, new Point(pegX, pegY));
                 pegList.add(tmp);
             }
